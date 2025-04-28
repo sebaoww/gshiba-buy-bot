@@ -73,6 +73,42 @@ setInterval(async () => {
     }
 }, 5000);
 
+// Comando /test
+bot.command('test', async (ctx) => {
+    try {
+        await bot.telegram.sendPhoto(
+            CHAT_ID,
+            'https://teal-efficient-beaver-393.mypinata.cloud/ipfs/bafybeidzr2d46uluvcxqpmoa5rs4d37ih6kvkwl7cdh26ze2lms6awpi64',
+            {
+                caption: `🚀 GRUMPYSHIBA COIN – NEW BUY! [$GSHIBA]
+
+💵 Spent: $15.00 / 0.1 SOL
+🐾 Got: 15000 $GSHIBA
+🧾 Buyer: [Test Wallet](https://solscan.io/account/TEST)
+🧾 TX: [Test TX](https://solscan.io/tx/TEST)
+
+📈 Position: 0.00%
+💰 Price: $0.00001
+🧢 Market Cap: $100,000`,
+                parse_mode: 'Markdown',
+                ...Markup.inlineKeyboard([
+                    [
+                        Markup.button.url('📊 Chart', `https://www.geckoterminal.com/solana/pools/${POOL_ID}`),
+                        Markup.button.url('🛒 Buy', `https://jup.ag/tokens/${TOKEN_CA}`)
+                    ],
+                    [
+                        Markup.button.url('🔥 Trending', `https://coinhall.org/solana/token/${TOKEN_CA}`)
+                    ]
+                ])
+            }
+        );
+        ctx.reply('✅ Test BUY inviato!');
+    } catch (error) {
+        console.error('Errore invio test:', error.message);
+        ctx.reply('❌ Errore invio test.');
+    }
+});
+
 // Comando /on
 bot.command('on', (ctx) => {
     notificationsEnabled = true;
@@ -93,3 +129,4 @@ process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
 
 console.log('🤖 GrumpyShiba Coin bot live! (HTTP polling su volume ogni 5 secondi)');
+
