@@ -8,7 +8,7 @@ const bot = new Telegraf(process.env.BOT_TOKEN);
 const RPC_URL = process.env.RPC_URL;
 const TOKEN_CA = process.env.TOKEN_CA;
 const POOL_ID = process.env.POOL_ID;
-const CHAT_ID = '-1002358567825';
+const CHAT_ID = '1002358567825';
 
 let notificationsEnabled = true; // Stato ON/OFF notifiche
 let lastVolume = 0; // Per rilevare nuove transazioni
